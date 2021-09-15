@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookShop.Data;
+using BookShop.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +39,9 @@ namespace BookShop
               options.UseSqlServer(ConnectionString));
             
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "BookShop", Version = "v1"}); });
+            
+            // register services
+            services.AddTransient<BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
